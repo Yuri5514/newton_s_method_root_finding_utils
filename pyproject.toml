@@ -1,0 +1,14 @@
+[project]
+name = "newton-s-method-root-finding-utils"
+version = "0.1.0"
+description = "A small, dependency-free scalar root finder that uses Newton's method with a numerical derivative when no analytic derivative is available."
+requires-python = ">=3.10"
+dependencies = []
+readme = "README.md"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
