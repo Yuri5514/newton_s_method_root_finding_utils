@@ -25,3 +25,10 @@ Newton's method is the fastest general scalar root finder when you have a deriva
 ## The awkward edge
 
 The stopping rule is relative: `|x_{n+1} - x_n| <= tol * max(1.0, |x_{n+1}|)`. That keeps `tol` meaningful when the root is large, but it means that for roots near zero the effective absolute tolerance is just `tol`. If you need absolute control near zero, pass a larger `tol`; if you need more digits, note that `newton` cannot deliver them past the numerical-derivative floor.
+
+## Design notes
+
+The window stores values eagerly rather than keeping running aggregates. Running
+sums drift with floating point over long streams, and recomputing from a small
+buffer is cheap enough that the drift is not worth the speed.
+
